@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>אבשלום | אליפות הבר מצווה</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background-glow background-glow-1" aria-hidden="true"></div>
+  <div class="background-glow background-glow-2" aria-hidden="true"></div>
+
+  <section class="sequence-story" id="sequence-story">
+    <div class="sequence-sticky">
+      <canvas id="sequence-canvas" class="sequence-canvas" aria-label="אבשלום אנימציית פתיחה"></canvas>
+
+      <div id="sequence-loading" class="sequence-loading" role="status" aria-live="polite">
+        <p class="sequence-loading-label">טוען אנימציה <span id="sequence-progress">0%</span></p>
+        <div class="sequence-loading-track">
+          <div id="sequence-progress-bar" class="sequence-loading-bar"></div>
+        </div>
+      </div>
+
+      <div class="sequence-overlay">
+        <article class="story-beat is-active" data-beat="a">
+          <h2>אבשלום</h2>
+          <p>26.02.2026</p>
+        </article>
+
+        <article class="story-beat" data-beat="b">
+          <h2>ברוכים הבאים</h2>
+          <p>שמחים שאתם איתנו בבוקר הזה</p>
+        </article>
+
+        <article class="story-beat" data-beat="c">
+          <h2>תודה שבאתם</h2>
+          <p>לחגוג איתנו את רגע בר המצווה</p>
+        </article>
+
+        <article class="story-beat" data-beat="d">
+          <h2>תיהנו מהאירוע</h2>
+          <p aria-hidden="true">&nbsp;</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <main class="page-wrapper">
+    <section class="hero glass-panel" id="top">
+      <div class="hero-badge">26.02.2026</div>
+      <h1>מזל טוב אבשלום</h1>
+
+      <img class="hero-image" src="public/images/victory-1.jpeg" alt="אבשלום - תמונת שער">
+      <p class="hero-subtitle">שמחים לחגוג איתך את הבוקר המיוחד הזה</p>
+    </section>
+
+    <section class="section-block" id="gallery">
+      <div class="section-heading glass-panel">
+        <h2>רגעים של אליפות</h2>
+        <p>תמונות נבחרות של אבשלום ברגעי שיא.</p>
+      </div>
+
+      <div class="bento-grid">
+        <article class="bento-item bento-large glass-panel"><img src="public/images/victory-1.jpeg" alt="רגע אליפות 1"></article>
+        <article class="bento-item glass-panel"><img src="public/images/victory-2.jpeg" alt="רגע אליפות 2"></article>
+        <article class="bento-item glass-panel"><img src="public/images/victory-3.jpeg" alt="רגע אליפות 3"></article>
+        <article class="bento-item bento-tall glass-panel"><img src="public/images/victory-4.jpeg" alt="רגע אליפות 4"></article>
+        <article class="bento-item bento-wide glass-panel"><img src="public/images/victory-5.jpeg" alt="רגע אליפות 5"></article>
+        <article class="bento-item glass-panel"><img src="public/images/victory-6.jpeg" alt="רגע אליפות 6"></article>
+        <article class="bento-item glass-panel"><img src="public/images/victory-7.jpeg" alt="רגע אליפות 7"></article>
+        <article class="bento-item bento-wide glass-panel"><img src="public/images/victory-8.jpeg" alt="רגע אליפות 8"></article>
+      </div>
+    </section>
+
+    <section class="section-block" id="greetings">
+      <div class="section-heading glass-panel">
+        <h2>נבחרת המברכים</h2>
+        <p>לחיצה על כרטיס תפתח את אזור המדיה.</p>
+      </div>
+
+      <div class="greetings-grid">
+        <button class="greeting-card" data-name="עמית גורן" data-video="https://www.youtube.com/watch?v=AvxPVFt9nlE">
+          <span class="card-badge">MVP</span>
+          <h3>עמית גורן</h3>
+          <p>ברכה אישית לאלוף הערב</p>
+        </button>
+
+        <button class="greeting-card" data-name="פבלו ומשה" data-video="https://www.youtube.com/watch?v=AvxPVFt9nlE">
+          <span class="card-badge">COACHES</span>
+          <h3>פבלו ומשה</h3>
+          <p>ברכת צוות האימון</p>
+        </button>
+
+        <button class="greeting-card" data-name="עשירה" data-image="public/images/greeting-ashira.jpeg">
+          <span class="card-badge">LEGEND</span>
+          <h3>עשירה</h3>
+          <p>מסר משפחתי מרגש</p>
+        </button>
+
+        <button class="greeting-card" data-name="דליה" data-image="public/images/greeting-dalia.jpeg">
+          <span class="card-badge">FAMILY</span>
+          <h3>דליה</h3>
+          <p>ברכת זהב מהלב</p>
+        </button>
+      </div>
+    </section>
+
+    <section class="danger-zone" id="danger-zone">
+      <div class="danger-inner">
+        <h2>⚠️ Danger Zone ⚠️ - זהירות, פדיחות לפניכם!</h2>
+        <div class="danger-video-placeholder">
+          <p id="danger-video-caption">סרטון פאדיחות רשמי:</p>
+          <div id="danger-video-wrap" class="video-wrap media-hidden">
+            <iframe
+              id="danger-video-iframe"
+              title="ברכה ביוטיוב"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div id="danger-video-fallback" class="video-fallback media-hidden" role="status" aria-live="polite"></div>
+          <img id="danger-image" class="image-frame media-hidden" alt="" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer glass-panel">
+      <p>תודה שבאתם</p>
+      <small>שמחים שאתם איתנו בחגיגת בר המצווה של אבשלום</small>
+    </footer>
+  </main>
+
+  <script>
+    const YOUTUBE_WATCH_URL = 'https://www.youtube.com/watch?v=AvxPVFt9nlE';
+
+    function toYouTubeEmbedUrl(url) {
+      if (!url) return '';
+      if (url.includes('youtube.com/embed/')) {
+        return url.includes('?') ? url : url + '?rel=0&modestbranding=1';
+      }
+      if (url.includes('youtube.com/watch?v=')) {
+        const id = url.split('v=')[1]?.split('&')[0] || '';
+        return id ? 'https://www.youtube.com/embed/' + id + '?rel=0&modestbranding=1' : '';
+      }
+      if (url.includes('youtu.be/')) {
+        const id = url.split('youtu.be/')[1]?.split('?')[0] || '';
+        return id ? 'https://www.youtube.com/embed/' + id + '?rel=0&modestbranding=1' : '';
+      }
+      return '';
+    }
+
+    function showFallback(message) {
+      const fallback = document.getElementById('danger-video-fallback');
+      const wrap = document.getElementById('danger-video-wrap');
+      const iframe = document.getElementById('danger-video-iframe');
+      if (iframe) {
+        iframe.src = '';
+      }
+      if (wrap) {
+        wrap.classList.add('media-hidden');
+      }
+      if (fallback) {
+        fallback.textContent = message;
+        fallback.classList.remove('media-hidden');
+      }
+    }
+
+    function showYouTube(videoUrl) {
+      const wrap = document.getElementById('danger-video-wrap');
+      const iframe = document.getElementById('danger-video-iframe');
+      const fallback = document.getElementById('danger-video-fallback');
+      const embedUrl = toYouTubeEmbedUrl(videoUrl);
+
+      if (!embedUrl) {
+        showFallback('וידאו יוטיוב יתווסף כאן.');
+        return;
+      }
+
+      if (!navigator.onLine) {
+        showFallback('אין כרגע חיבור אינטרנט. הווידאו זמין ביוטיוב כשמתחברים לרשת.');
+        return;
+      }
+
+      if (fallback) {
+        fallback.classList.add('media-hidden');
+      }
+      if (wrap) {
+        wrap.classList.remove('media-hidden');
+      }
+      if (iframe) {
+        iframe.src = embedUrl;
+      }
+    }
+
+    document.querySelectorAll('.greeting-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        const videoArea = document.getElementById('danger-video-caption');
+        const dangerImage = document.getElementById('danger-image');
+        const selectedVideo = card.dataset.video || '';
+        const selectedImage = card.dataset.image || '';
+
+        if (dangerImage && selectedImage) {
+          dangerImage.src = selectedImage;
+          dangerImage.alt = 'ברכה של ' + card.dataset.name;
+          dangerImage.classList.remove('media-hidden');
+          showFallback('');
+          const wrap = document.getElementById('danger-video-wrap');
+          const fallback = document.getElementById('danger-video-fallback');
+          if (wrap) wrap.classList.add('media-hidden');
+          if (fallback) fallback.classList.add('media-hidden');
+        } else {
+          if (dangerImage) {
+            dangerImage.classList.add('media-hidden');
+            dangerImage.src = '';
+            dangerImage.alt = '';
+          }
+          showYouTube(selectedVideo || YOUTUBE_WATCH_URL);
+        }
+
+        if (videoArea) {
+          if (selectedImage) {
+            videoArea.textContent = 'ברכה של ' + card.dataset.name;
+          } else {
+            videoArea.textContent = 'וידאו של ' + card.dataset.name;
+          }
+        }
+
+        document.getElementById('danger-zone').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    showYouTube(YOUTUBE_WATCH_URL);
+  </script>
+  <script src="sequence.js"></script>
+</body>
+</html>
+

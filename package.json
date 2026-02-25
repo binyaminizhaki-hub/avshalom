@@ -1,0 +1,19 @@
+{
+  "name": "untitled",
+  "version": "1.0.0",
+  "description": "Bar Mitzvah interactive one-page site",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "start": "node index.js",
+    "check": "node --check index.js && node --check script.js",
+    "frames:normalize": "node rename-frames.js"
+  },
+  "private": true,
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.34.3",
+    "sharp": "^0.34.5",
+    "tailwind-merge": "^3.5.0"
+  }
+}
