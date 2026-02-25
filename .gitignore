@@ -6,4 +6,3 @@ build
 *.zip
 .idea
 public/videos
-public/sequence
