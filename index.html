@@ -78,7 +78,7 @@
     <section class="section-block" id="greetings">
       <div class="section-heading glass-panel">
         <h2>נבחרת המברכים</h2>
-        <p>לחיצה על כרטיס תפתח את אזור המדיה.</p>
+        <p>לחיצה על כרטיס תפתח את הברכה.</p>
       </div>
 
       <div class="greetings-grid">
@@ -134,6 +134,30 @@
       <small>שמחים שאתם איתנו בחגיגת בר המצווה של אבשלום</small>
     </footer>
   </main>
+
+  <div id="video-modal" class="video-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="video-modal-title">
+    <button type="button" class="video-modal-backdrop" data-close-video-modal aria-label="סגור חלון וידאו"></button>
+    <div class="video-modal-panel">
+      <div class="video-modal-header">
+        <h3 id="video-modal-title" class="video-modal-title">וידאו</h3>
+        <button type="button" class="video-modal-close" data-close-video-modal aria-label="סגור">×</button>
+      </div>
+      <div class="video-modal-player">
+        <div class="video-modal-frame-wrap">
+          <iframe
+            id="video-modal-iframe"
+            class="video-modal-frame"
+            title="ברכת וידאו"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div id="video-modal-fallback" class="video-fallback video-modal-fallback media-hidden" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
 
   <script>
     const YOUTUBE_WATCH_URL = 'https://www.youtube.com/watch?v=AvxPVFt9nlE';
@@ -197,12 +221,73 @@
       }
     }
 
+    function closeVideoModal() {
+      const modal = document.getElementById('video-modal');
+      const modalIframe = document.getElementById('video-modal-iframe');
+      const modalFallback = document.getElementById('video-modal-fallback');
+      if (modal) {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+      if (modalIframe) {
+        modalIframe.src = '';
+      }
+      if (modalFallback) {
+        modalFallback.classList.add('media-hidden');
+        modalFallback.textContent = '';
+      }
+      document.body.classList.remove('modal-open');
+    }
+
+    function openVideoModal(name, videoUrl) {
+      const modal = document.getElementById('video-modal');
+      const modalTitle = document.getElementById('video-modal-title');
+      const modalIframe = document.getElementById('video-modal-iframe');
+      const modalFallback = document.getElementById('video-modal-fallback');
+      const embedUrl = toYouTubeEmbedUrl(videoUrl);
+
+      if (!modal || !modalTitle || !modalIframe || !modalFallback) {
+        return;
+      }
+
+      modalTitle.textContent = 'וידאו של ' + (name || 'הצוות');
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+
+      if (!embedUrl) {
+        modalIframe.classList.add('media-hidden');
+        modalIframe.src = '';
+        modalFallback.textContent = 'לינק הווידאו עדיין לא הוגדר.';
+        modalFallback.classList.remove('media-hidden');
+        return;
+      }
+
+      if (!navigator.onLine) {
+        modalIframe.classList.add('media-hidden');
+        modalIframe.src = '';
+        modalFallback.textContent = 'אין כרגע חיבור אינטרנט. הווידאו זמין ביוטיוב כשמתחברים לרשת.';
+        modalFallback.classList.remove('media-hidden');
+        return;
+      }
+
+      modalFallback.classList.add('media-hidden');
+      modalFallback.textContent = '';
+      modalIframe.classList.remove('media-hidden');
+      modalIframe.src = embedUrl + '&autoplay=1';
+    }
+
     document.querySelectorAll('.greeting-card').forEach(function (card) {
       card.addEventListener('click', function () {
         const videoArea = document.getElementById('danger-video-caption');
         const dangerImage = document.getElementById('danger-image');
         const selectedVideo = card.dataset.video || '';
         const selectedImage = card.dataset.image || '';
+
+        if (selectedVideo) {
+          openVideoModal(card.dataset.name || '', selectedVideo);
+          return;
+        }
 
         if (dangerImage && selectedImage) {
           dangerImage.src = selectedImage;
@@ -232,6 +317,16 @@
 
         document.getElementById('danger-zone').scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
+    });
+
+    document.querySelectorAll('[data-close-video-modal]').forEach(function (element) {
+      element.addEventListener('click', closeVideoModal);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeVideoModal();
+      }
     });
 
     showYouTube(YOUTUBE_WATCH_URL);
